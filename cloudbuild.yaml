@@ -1,11 +1,11 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/cloud-enablement-235309/goapp', '.']
+  args: ['build', '-t', 'gcr.io/cloud-enablement-235309/hello-app', '.']
   timeout: 500s
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/cloud-enablement-235309/goapp']
+  args: ['push', 'gcr.io/cloud-enablement-235309/hello-app']
 - name: 'gcr.io/cloud-builders/kubectl'
-  args: ['set', 'image', 'deployment/hello', 'helloapp=gcr.io/cloud-enablement-235309/goapp']
+  args: ['set', 'image', 'deployment/hello', 'helloapp=gcr.io/cloud-enablement-235309/hello-app']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
   - 'CLOUDSDK_CONTAINER_CLUSTER=cluster'
