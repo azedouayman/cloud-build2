@@ -7,5 +7,5 @@ steps:
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['set', 'image', 'deployment/hello', 'helloapp=gcr.io/cloud-enablement-235309/hello-app:$COMMIT_SHA']
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=cluster'
