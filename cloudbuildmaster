@@ -1,0 +1,12 @@
+    
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/cloud-enablement-235309/app-hello:$COMMIT_SHA', '.']
+  timeout: 500s
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/cloud-enablement-235309/app-hello:$COMMIT_SHA']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['set', 'image', 'deployment/app-hello-test', 'app-hello=gcr.io/cloud-enablement-235309/app-hello:$COMMIT_SHA']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=cluster'
